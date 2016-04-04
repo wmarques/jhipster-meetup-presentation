@@ -128,6 +128,35 @@ jhipster:docker-compose
                     </section>
 				</section>
 
+                <section>
+                    <section>
+                        <h2>Want to scale ?</h2>
+                        <img  data-src="img/scale.gif" alt="" />
+                    </section>
+                    <section>
+                        <h2>How to scale a microservice</h2>
+                        <pre><code data-trim class="sh">
+                            docker-compose scale ms-app=3
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>How to scale a database</h2>
+                        <p>
+                            Only available with Cassandra and MongoDB databases.
+                        </p>
+                        <p>
+                            We are going to scale our MongoDB database:
+                            <ul>
+                                <li>Use the cluster mode of MongoDB</li>
+                                <li>Scale the node service</li>
+                                <li>Initiate a replicaset of X node</li>
+                                <li>Register the shard into the router service (mongos)</li>
+                                <li>Relaunch our application</li>
+                            </ul>
+                        </p>
+                    </section>
+                </section>
+
 				<section>
 					<section id="fragments">
 						<h2>Fragments</h2>
@@ -378,7 +407,7 @@ Reveal.addEventListener( 'customevent', function() {
 				center: true,
                 slideNumber:true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
