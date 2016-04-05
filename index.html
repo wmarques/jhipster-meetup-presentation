@@ -172,41 +172,46 @@ jhipster:docker-compose
                     </section>
                 </section>
 
-            	<section>
-            		<section data-markdown>
-            			<script type="text/template">
-### Monitoring a JHipster microservice architecture
-##<i class="fa fa-line-chart"></i>
-<span style="float:left">What do we want to do ?</span>
-* Centralize and analyse all your apps logs and metrics
-* Be able to index and search logs
-* Display metrics in real time graphs
-* Have some level of interactivity in our dashboards <!--refine the selection -->
-            			</script>
-            		</section>
-            		<section>
-            			<!--
-            			The ELK stack is composed of:
 
-            			Elasticsearch for indexing the data (logs and metrics)
-            			Logstash to manage and process the logs received from the applications
-            			Kibana to visualize the logs with a nice interface
-            			-->
-            			<img data-src="img/console.svg" alt="" style="border:none" width="40%"/>
+	<section>
+		<section data-markdown>
+			<script type="text/template">
+				### Monitoring a JHipster microservice architecture
+				##<i class="fa fa-line-chart"></i>
+				<span style="float:left">What do we want to do ?</span>
+				* Centralize and analyse all your apps logs and metrics
+				* Be able to index and search logs
+				* Display metrics in real time graphs
+				* Have some level of interactivity in our dashboards <!--refine the selection -->
+			</script>
+		</section>
+		<section data-markdown>
+			<!--
+			The ELK stack is composed of:
 
-            			<div class="fragment">Monitoring and Alerting tool based on the ELK stack
-            				<img data-src="img/elk-logo.png" alt="" style="border:none" width="40%"/>
-            			</div>
-            			<ul>
-                            <span class="fragment"><li>Docker based project for easy deployment</li></span>
-                			<span class="fragment"><li>Monitor logs and metrics of your monolith and microservice apps</li></span>
-                			<span class="fragment"><li>Define alerting rules to be notified when anolies are detected (provided by the **Elastalert** tool from Yelp)</li></span>
-                			<span class="fragment"><li>Can be customized to your needs</li></span>
-                			<span class="fragment"><li>Can be extended for other uses</li></span>
-                        </ul>
-            		</section>
-            		<section data-markdown>
-            			<script type="text/template">
+			Elasticsearch for indexing the data (logs and metrics)
+			Logstash to manage and process the logs received from the applications
+			Kibana to visualize the logs with a nice interface
+			-->
+			<script type="text/template">
+			<img data-src="img/console.svg" alt="" style="border:none" width="40%"/>
+
+			<div class="fragment">Monitoring and Alerting tool based on the ELK stack
+				<img data-src="img/elk-logo.png" alt="" style="border:none" width="45%"/>
+				<img data-src="img/docker+metrics.png" alt="" style="border:none" width="23%"/>
+			</div>
+
+			<ul>
+			<span class="fragment"><li>Monitor logs and metrics of your monolith and microservice apps</li></span>
+			<span class="fragment"><li>Define alerting rules to be notified when anolies are detected (provided by the **Elastalert** tool from Yelp)</li></span>
+			<span class="fragment"><li>Can be customized and extended to suit your needs</li></span>
+			</script>
+			<aside>
+
+			</aside>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
 				### Getting started with JHipster monitoring
 Forward logs and metrics to logstash
 
@@ -229,108 +234,126 @@ curl -o docker-compose.yml https://raw.githubusercontent.com/jhipster/jhipster-c
 ```
 docker-compose up -d
 ```
-            			</script>
-            		</section>
-            		<section data-markdown>
-            			<script type="text/template">
-# DEMO
-            			</script>
-            		</section>
-            	</section>
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				# DEMO
+			</script>
+		</section>
+	</section>
 
-                <section>
-                	<section data-markdown>
-                		<script type="text/template">
-### Centralized Configuration with JHipster and Spring Cloud Config
-<p><i class="fa fa-leaf"></i> + <i class="fa fa-cloud"></i> + <i class="fa fa-cogs"></i></p>
-<ul><span class="fragment"><li> Deal with the complexity of managing multiples services configuration</li></span>
-<span class="fragment"><li> Externalize applications configuration (12 factor)</li></span>
-<span class="fragment"><li> Define configurations for specific profiles (dev, prod)</li></span>
-<span class="fragment"><li> Put the configuration under version control</li></span>
-<span class="fragment"><li> Bonus: refresh configuration without restarting the app</li></span></ul>
-                		</script>
-                	</section>
-
-                	<section data-markdown>
-                		<script type="text/template">
-### How does it works ?
-
-<ul>
-    <div class="fragment"><li> On startup, applications query the **configuration server** and overwrite local properties with the remote ones</li></div>
-    <div class="fragment">
-    	<li> Properties are regular Spring Boot properties:
-    		<div class="fragment">
-    		<ul>
-    		<li> Typed, defined with a key-value format (.properties, .yml)</li>
-    		<li> Defined in Java **@ConfigurationProperties** classes</li>
-    		<li> Properties can be profile specific </li><!--application.yml, application-dev.yml replaced extended  -->
-    		<li> Several profiles can be used at the same time</li>
-    		<ul>
-    		</div>
-    	</li>
-    </div>
-</ul>
-                		</script>
-                	</section>
-
-                	<section data-markdown>
-                		<script type="text/template">
-### Use the Configuration Server
-How do I define externalized properties for my services ?
-
-<span style="font-size:95%" class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files in your configuration source</span>
-<div class="fragment">
-`application.yml`
-```
-property.foo: Hello JHipster Meetup !
-```
-`app1-dev.yml`
-```
-server.port: 8081
-property.foo: Hello dev
-```
-`app-prod.yml`
-```
-server.port: 8082
-property.foo: Hello prod
-```
-                		</script>
-                	</section>
-
-                	<section data-markdown>
-                		<script type="text/template">
-### Configurations sources
-- <i class="fa fa-file-text-o"></i> File based  (for development)
-- <i class="fa fa-code-fork"></i> Git based (for production)
-
-<p><i class="fa fa-arrow-circle-right"></i> Load from a git repo (_file://_, _https://_ or _ssh://_)</p>
-<p><i class="fa fa-arrow-circle-right"></i> Persists the config on the clients</p>
-<p><i class="fa fa-arrow-circle-right"></i> Tag the config (using _branches_ or _commit ids_)</p>
-                	    </script>
-                	</section>
-
-                	<section data-markdown>
-                		<script type="text/template">
-# DEMO
-<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
-                	</script>
-                	</section>
-                </section>
+<section>
+	<section data-markdown>
+		<script type="text/template">
+			### Centralized Configuration with JHipster and Spring Cloud Config
+			<p><i class="fa fa-leaf"></i> + <i class="fa fa-cloud"></i> + <i class="fa fa-cogs"></i></p>
+			<ul><span class="fragment"><li> Deal with the complexity of managing multiples services configuration</li></span>
+			<span class="fragment"><li> Externalize applications configuration (12 factor)</li></span>
+			<span class="fragment"><li> Define configurations for specific profiles (dev, prod)</li></span>
+			<span class="fragment"><li> Put the configuration under version control</li></span>
+			<span class="fragment"><li> Bonus: refresh configuration without restarting the app</li></span></ul>
+		</script>
+	</section>
 
 	<section data-markdown>
 		<script type="text/template">
-	### Feature Toggling with JHipster microservices
-	* **Goal:** Gradually and safely replace an existing functionality
-	* **Challenge:** Our architecture is distributed !<!-- so it's not just a matter of wrapping new code in a big "if"-->
+			### How does it works ?
 
-	<p style="float:left"> _Feature toggling can be used for:_</p>
-	* **Canary releasing:** turn the new feature for _N%_ of users
-	* **A/B testing:**  turn on the feature for a control group and study their behavior
+			<ul><span class="fragment"><li> On startup, applications query the **configuration server** and overwrite local properties with the remote ones</li></span>
+			<div class="fragment">
+			<li> Properties are regular Spring Boot properties:
+				<div class="fragment">
+				<ul>
+				<li> Typed, defined with a key-value format (.properties, .yml)</li>
+				<li> Defined in **@ConfigurationProperties** classes</li>
+				<li> Properties can be profile specific </li><!--application.yml, application-dev.yml replaced extended  -->
+				<li> Several profiles can be used at the same time</li>
+				<ul>
+				</div>
+			</li>
+		</div>
+		</script>
+	</section>
 
-		<!-- feature toggling demo, refreshing zuul routing -->
+	<section data-markdown>
+		<script type="text/template">
+			### Use the Configuration Server
+			How do I define externalized properties for my services ?
+
+			<span style="font-size:95%" class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files in your configuration source</span>
+			<div class="fragment">
+			`gateway.yml`
+			```
+			property.foo: Hello JHipster Meetup !
+			```
+			`gateway-dev.yml`
+			```
+			server.port: 8080
+			property.foo: Hello dev
+			```
+			`gateway-prod.yml`
+			```
+			server.port: 80
+			property.foo: Hello prod
+			```
+		</script>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		### Configurations sources
+		- <i class="fa fa-file-text-o"></i> File based  (for development)
+		- <i class="fa fa-code-fork"></i> Git based (for production)
+
+	<p><i class="fa fa-arrow-circle-right"></i> Load from a git repo (_file://_, _https://_ or _ssh://_)</p>
+	<p><i class="fa fa-arrow-circle-right"></i> Persists the config on the clients</p>
+	<p><i class="fa fa-arrow-circle-right"></i> Tag the config (using _branches_ or _commit ids_)</p>
 	</script>
 	</section>
 
+	<section data-markdown>
+		<script type="text/template">
+		# DEMO
+		<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
+	</script>
+	</section>
+</section>
+
+<section>
+	<section data-markdown data-transition="none">
+		<script type="text/template" >
+	### Feature Toggling <i class="fa fa-toggle-off"></i>
+	### with JHipster microservices
+		</script>
+	</section>
+	<section data-markdown data-transition="none">
+		<script type="text/template">
+	### Feature Toggling <i class="fa fa-toggle-on"></i>
+	### with JHipster microservices
+		</script>
+	</section>
+	<section data-markdown >
+		<script type="text/template">
+	### Feature Toggling <i class="fa fa-toggle-on"></i>
+	### with JHipster microservices
+	* **Goal:** Safely replace an existing functionality with no downtime
+	* **Problem:** Our architecture is distributed !<!-- so it's not just a matter of wrapping new code in a big "if"-->
+
+	<blockquote style="width:100%">
+		<p style="float:left"> Feature toggling can be used for:</p>
+	<ul><li> **Canary releasing:** turn the new feature for _N%_ of users</li>
+	<li> **A/B testing:**  turn on the feature for a control group and study their behavior</li>
+	</ul>
+	</blockquote>
+		<!-- feature toggling demo, refreshing zuul routing -->
+	</script>
+	<aside>
+		* Safely replace an existing functionality with no downtime
+		* have several version of the same feature available at the same time
+	</aside>
+	</section>
+    </section>
 				<section style="text-align: left;">
 					<h1>Thank You !</h1>
 				</section>
