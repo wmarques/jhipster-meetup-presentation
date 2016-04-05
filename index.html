@@ -172,6 +172,73 @@ jhipster:docker-compose
                     </section>
                 </section>
 
+	<section>
+		<section data-markdown>
+			<script type="text/template">
+				### Monitoring a JHipster microservice architecture
+				##<i class="fa fa-line-chart"></i>
+				<span style="float:left">What do we want to do ?</span>
+				* Centralize and analyse all your apps logs and metrics
+				* Be able to index and search logs
+				* Display metrics in real time graphs
+				* Have some level of interactivity in our dashboards <!--refine the selection -->
+			</script>
+		</section>
+		<section data-markdown>
+			<!--
+			The ELK stack is composed of:
+
+			Elasticsearch for indexing the data (logs and metrics)
+			Logstash to manage and process the logs received from the applications
+			Kibana to visualize the logs with a nice interface
+			-->
+			<script type="text/template">
+			<img data-src="img/console.svg" alt="" style="border:none" width="40%"/>
+
+			<span class="fragment">Monitoring and Alerting tool based on the ELK stack
+				<img data-src="img/elk-logo.png" alt="" style="border:none" width="40%"/>
+			</span>
+			<ul><span class="fragment"><li>Docker based project for easy deployment</li></span>
+			<span class="fragment"><li>Monitor logs and metrics of your monolith and microservice apps</li></span>
+			<span class="fragment"><li>Define alerting rules to be notified when anolies are detected (provided by the **Elastalert** tool from Yelp)</li></span>
+			<span class="fragment"><li>Can be customized to your needs</li></span>
+			<span class="fragment"><li>Can be extended for other uses</li></span>
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				### Getting started with JHipster monitoring
+Forward logs and metrics to logstash
+
+```
+jhipster:
+	logging:
+		logstash:
+			enabled: true
+			host: localhost
+		metrics:
+			logs:
+				enabled: true
+				reportFrequency: 60 # seconds
+```
+Get the compose file and start **JHipster-Console**, **Elasticsearch** and **Logstash**:
+<!--
+curl -o conf/logstash.conf https://raw.githubusercontent.com/jhipster/jhipster-console/master/log-monitoring/log-config/logstash.conf
+curl -o docker-compose.yml https://raw.githubusercontent.com/jhipster/jhipster-console/master/boostrap/docker-compose.yml
+-->
+```
+docker-compose up -d
+```
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				# DEMO
+			</script>
+		</section>
+	</section>
+
+<section>
 	<section data-markdown>
 		<script type="text/template">
 			### Centralized Configuration with JHipster and Spring Cloud Config
@@ -183,22 +250,24 @@ jhipster:docker-compose
 			<span class="fragment"><li> Bonus: refresh configuration without restarting the app</li></span></ul>
 		</script>
 	</section>
-	<section data-markdown>
-		<script type="text/template">
-### How does it works ?
-
-* On startup, apps query the config server and overwrite local properties with the remote ones
-* In production, the app doesn't start if it can't get its configuration
-* Properties can be
-		</script>
-	</section>
 
 	<section data-markdown>
 		<script type="text/template">
-			### title
-			* On startup, apps query the config server and overwrite local properties with the remote ones
-			* In production, the app doesn't start if it can't get its configuration
-			* Properties can be
+			### How does it works ?
+
+			<ul><span class="fragment"><li> On startup, applications query the **configuration server** and overwrite local properties with the remote ones</li></span>
+			<div class="fragment">
+			<li> Properties are regular Spring Boot properties:
+				<div class="fragment">
+				<ul>
+				<li> Typed, defined with a key-value format (.properties, .yml)</li>
+				<li> Defined in Java **@ConfigurationProperties** classes</li>
+				<li> Properties can be profile specific </li><!--application.yml, application-dev.yml replaced extended  -->
+				<li> Several profiles can be used at the same time</li>
+				<ul>
+				</div>
+			</li>
+		</div>
 		</script>
 	</section>
 
@@ -207,18 +276,18 @@ jhipster:docker-compose
 			### Use the Configuration Server
 			How do I define externalized properties for my services ?
 
-			<span class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files (appname-profile.yml) in your configuration source</span>
+			<span style="font-size:95%" class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files in your configuration source</span>
 			<div class="fragment">
-			application.yml
+			`application.yml`
 			```
 			property.foo: Hello JHipster Meetup !
 			```
-			app1-dev.yml
+			`app1-dev.yml`
 			```
 			server.port: 8081
 			property.foo: Hello dev
 			```
-			app-prod.yml
+			`app-prod.yml`
 			```
 			server.port: 8082
 			property.foo: Hello prod
@@ -244,6 +313,8 @@ jhipster:docker-compose
 		<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
 	</script>
 	</section>
+</section>
+
 	<section data-markdown>
 		<script type="text/template">
 	### Feature Toggling with JHipster microservices
