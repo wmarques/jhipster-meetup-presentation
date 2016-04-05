@@ -195,15 +195,19 @@ jhipster:docker-compose
 			<script type="text/template">
 			<img data-src="img/console.svg" alt="" style="border:none" width="40%"/>
 
-			<span class="fragment">Monitoring and Alerting tool based on the ELK stack
-				<img data-src="img/elk-logo.png" alt="" style="border:none" width="40%"/>
-			</span>
-			<ul><span class="fragment"><li>Docker based project for easy deployment</li></span>
+			<div class="fragment">Monitoring and Alerting tool based on the ELK stack
+				<img data-src="img/elk-logo.png" alt="" style="border:none" width="45%"/>
+				<img data-src="img/docker+metrics.png" alt="" style="border:none" width="23%"/>
+			</div>
+
+			<ul>
 			<span class="fragment"><li>Monitor logs and metrics of your monolith and microservice apps</li></span>
 			<span class="fragment"><li>Define alerting rules to be notified when anolies are detected (provided by the **Elastalert** tool from Yelp)</li></span>
-			<span class="fragment"><li>Can be customized to your needs</li></span>
-			<span class="fragment"><li>Can be extended for other uses</li></span>
+			<span class="fragment"><li>Can be customized and extended to suit your needs</li></span>
 			</script>
+			<aside>
+
+			</aside>
 		</section>
 		<section data-markdown>
 			<script type="text/template">
@@ -261,7 +265,7 @@ docker-compose up -d
 				<div class="fragment">
 				<ul>
 				<li> Typed, defined with a key-value format (.properties, .yml)</li>
-				<li> Defined in Java **@ConfigurationProperties** classes</li>
+				<li> Defined in **@ConfigurationProperties** classes</li>
 				<li> Properties can be profile specific </li><!--application.yml, application-dev.yml replaced extended  -->
 				<li> Several profiles can be used at the same time</li>
 				<ul>
@@ -278,18 +282,18 @@ docker-compose up -d
 
 			<span style="font-size:95%" class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files in your configuration source</span>
 			<div class="fragment">
-			`application.yml`
+			`gateway.yml`
 			```
 			property.foo: Hello JHipster Meetup !
 			```
-			`app1-dev.yml`
+			`gateway-dev.yml`
 			```
-			server.port: 8081
+			server.port: 8080
 			property.foo: Hello dev
 			```
-			`app-prod.yml`
+			`gateway-prod.yml`
 			```
-			server.port: 8082
+			server.port: 80
 			property.foo: Hello prod
 			```
 		</script>
@@ -315,22 +319,41 @@ docker-compose up -d
 	</section>
 </section>
 
-	<section data-markdown>
+<section>
+	<section data-markdown data-transition="none">
+		<script type="text/template" >
+	### Feature Toggling <i class="fa fa-toggle-off"></i>
+	### with JHipster microservices
+		</script>
+	</section>
+	<section data-markdown data-transition="none">
 		<script type="text/template">
-	### Feature Toggling with JHipster microservices
-	* **Goal:** Gradually and safely replace an existing functionality
-	* **Challenge:** Our architecture is distributed !<!-- so it's not just a matter of wrapping new code in a big "if"-->
+	### Feature Toggling <i class="fa fa-toggle-on"></i>
+	### with JHipster microservices
+		</script>
+	</section>
+	<section data-markdown >
+		<script type="text/template">
+	### Feature Toggling <i class="fa fa-toggle-on"></i>
+	### with JHipster microservices
+	* **Goal:** Safely replace an existing functionality with no downtime
+	* **Problem:** Our architecture is distributed !<!-- so it's not just a matter of wrapping new code in a big "if"-->
 
-	<p style="float:left"> _Feature toggling can be used for:_</p>
-	* **Canary releasing:** turn the new feature for _N%_ of users
-	* **A/B testing:**  turn on the feature for a control group and study their behavior
-
+	<blockquote style="width:100%">
+		<p style="float:left"> Feature toggling can be used for:</p>
+	<ul><li> **Canary releasing:** turn the new feature for _N%_ of users</li>
+	<li> **A/B testing:**  turn on the feature for a control group and study their behavior</li>
+	</ul>
+	</blockquote>
 		<!-- feature toggling demo, refreshing zuul routing -->
 	</script>
+	<aside>
+		* Safely replace an existing functionality with no downtime
+		* have several version of the same feature available at the same time
+	</aside>
 	</section>
 
-
-
+</section>
 		<section>
 					<section id="fragments">
 						<h2>Fragments</h2>
