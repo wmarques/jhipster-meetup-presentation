@@ -13,7 +13,7 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css" id="theme">
-
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -157,7 +157,95 @@ jhipster:docker-compose
                     </section>
                 </section>
 
-				<section>
+	<section data-markdown>
+		<script type="text/template">
+			### Centralized Configuration with JHipster and Spring Cloud Config
+			<p><i class="fa fa-leaf"></i> + <i class="fa fa-cloud"></i> + <i class="fa fa-cogs"></i></p>
+			<ul><span class="fragment"><li> Deal with the complexity of managing multiples services configuration</li></span>
+			<span class="fragment"><li> Externalize applications configuration (12 factor)</li></span>
+			<span class="fragment"><li> Define configurations for specific profiles (dev, prod)</li></span>
+			<span class="fragment"><li> Put the configuration under version control</li></span>
+			<span class="fragment"><li> Bonus: refresh configuration without restarting the app</li></span></ul>
+		</script>
+	</section>
+	<section data-markdown>
+		<script type="text/template">
+### How does it works ?
+
+* On startup, apps query the config server and overwrite local properties with the remote ones
+* In production, the app doesn't start if it can't get its configuration
+* Properties can be
+		</script>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+			### title
+			* On startup, apps query the config server and overwrite local properties with the remote ones
+			* In production, the app doesn't start if it can't get its configuration
+			* Properties can be
+		</script>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+			### Use the Configuration Server
+			How do I define externalized properties for my services ?
+
+			<span class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files (appname-profile.yml) in your configuration source</span>
+			<div class="fragment">
+			application.yml
+			```
+			property.foo: Hello JHipster Meetup !
+			```
+			app1-dev.yml
+			```
+			server.port: 8081
+			property.foo: Hello dev
+			```
+			app-prod.yml
+			```
+			server.port: 8082
+			property.foo: Hello prod
+			```
+		</script>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		### Configurations sources
+		- <i class="fa fa-file-text-o"></i> File based  (for development)
+		- <i class="fa fa-code-fork"></i> Git based (for production)
+
+	<p><i class="fa fa-arrow-circle-right"></i> Load from a git repo (_file://_, _https://_ or _ssh://_)</p>
+	<p><i class="fa fa-arrow-circle-right"></i> Persists the config on the clients</p>
+	<p><i class="fa fa-arrow-circle-right"></i> Tag the config (using _branches_ or _commit ids_)</p>
+	</script>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		# DEMO
+		<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
+	</script>
+	</section>
+	<section data-markdown>
+		<script type="text/template">
+	### Feature Toggling with JHipster microservices
+	* **Goal:** Gradually and safely replace an existing functionality
+	* **Challenge:** Our architecture is distributed !<!-- so it's not just a matter of wrapping new code in a big "if"-->
+
+	<p style="float:left"> _Feature toggling can be used for:_</p>
+	* **Canary releasing:** turn the new feature for _N%_ of users
+	* **A/B testing:**  turn on the feature for a control group and study their behavior
+
+		<!-- feature toggling demo, refreshing zuul routing -->
+	</script>
+	</section>
+
+
+
+		<section>
 					<section id="fragments">
 						<h2>Fragments</h2>
 						<p>Hit the next arrow...</p>
@@ -421,6 +509,5 @@ Reveal.addEventListener( 'customevent', function() {
 			});
 
 		</script>
-
 	</body>
 </html>
