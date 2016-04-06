@@ -223,8 +223,8 @@ jhipster:
 			host: localhost
 		metrics:
 			logs:
-				enabled: true
-				reportFrequency: 60 # seconds
+			    enabled: true
+			    reportFrequency: 60 # seconds
 ```
 Get the compose file and start **JHipster-Console**, **Elasticsearch** and **Logstash**:
 <!--
@@ -283,19 +283,13 @@ docker-compose up -d
 
 			<span style="font-size:95%" class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files in your configuration source</span>
 			<div class="fragment">
-			`gateway.yml`
+			`hipsterBankGateway.yml`
 			```
-			property.foo: Hello JHipster Meetup !
+			property.foo: Greetings Java Hipster !
 			```
-			`gateway-dev.yml`
+			`hipsterBankGateway-meetup.yml`
 			```
-			server.port: 8080
-			property.foo: Hello dev
-			```
-			`gateway-prod.yml`
-			```
-			server.port: 80
-			property.foo: Hello prod
+			property.foo: Greetings Java Hipster Meetup!
 			```
 		</script>
 	</section>
@@ -353,12 +347,42 @@ docker-compose up -d
 		* have several version of the same feature available at the same time
 	</aside>
 	</section>
-    </section>
-				<section style="text-align: left;">
-					<h1>Thank You !</h1>
-				</section>
 
-			</div>
+	<section>
+	  <h3>What we are going to do ?</h3>
+	  <div style="font-size:90%;text-align:left">
+
+	    <p>On the <b>back-end</b>:
+	    <ul>
+	    <li> Deploy <b>account-v2</b> a new (and better) account microservice that introduce breaking changes</li>
+	    <li> On the gateway, edit the route redirect API calls to accountv2</li>
+	    </ul></p>
+	    
+	    <p>On the <b>front-end</b>:
+	    <ul>
+	      <li> Switch a toggle to display the new UI</li>
+	    </ul>
+	    </p>
+	    
+	    <b>Requirements</b>:
+	    <ul style="disc">
+	      <li>Back-end and Front-end changes must happen at the same time</li> 
+	      <li>We are not allowed to restart the gateway</li>
+	    </ul>
+	    </div>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		# DEMO
+		<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
+	</script>
+	</section>
+    </section>
+<section style="text-align: left;">
+  <h1>Thank You !</h1>
+</section>
+</div>
 
 		</div>
 
