@@ -41,20 +41,22 @@
 				<div style="float:left">
 					<img src="img/1577727.jpeg" width="150"/>
 					<h3>William Marques</h3>
-                    <p>@wylmarq</p>
+                    <p><a href="http://twitter.com/wylmarq">@wylmarq</a></p>
+                    <p><a href="mailto:wmarques@ippon.fr">wmarques@ippon.fr</a></p>
 					<p>JHipster Intern</p>
 
 				</div>
 				<div style="float:right">
 					<img src="img/513471.jpeg" width="150"/>
 					<h3>Pierre Besson</h3>
-					<p>@pibesson</p>
+					<p><a href="http://twitter.com/pibesson">@pibesson</a></p>
+                    <p><a href="mailto:pbesson@ippon.fr">pbesson@ippon.fr</a></p>
 					<p>JHipster Intern</p>
 				</div>
 
 				</section>
 				<section>
-					<h4>Microservices, Gateway, Registry, Dashboards , ...</h4>
+					<h4>Microservices, Gateway, Registry, Dashboards ...</h4>
 					<h3><i class="fa fa-sitemap"></i> + <i class="fa fa-book"></i> + <i class="fa fa-tachometer"></i></h3>
 					<h2>How do I run all these apps ?</h2>
 					<h1><i class="fa fa-puzzle-piece"></i></h1>
@@ -112,14 +114,13 @@
                         <p>
                             To run all this without the subgenerator, we would need to :
                             <ul>
-                                <li>Go into each folder</li>
                                 <li>Launch each container one by one</li>
                                 <li>Create a shared config file (to share the JWT token)</li>
                                 <li>Launch the registry container</li>
                             </ul>
                         </p>
                         <p>
-                            It would be about <strong>5</strong> terminal tabs and <strong>alot</strong> of time...
+                            <strong>≈5</strong> terminal tabs and <strong>alot</strong> of time...
                         </p>
                         <img  data-src="img/sadcat.gif" alt="" />
 
@@ -171,8 +172,6 @@ jhipster:docker-compose
                         </p>
                     </section>
                 </section>
-
-
 	<section>
 		<section data-markdown>
 			<script type="text/template">
@@ -202,13 +201,11 @@ jhipster:docker-compose
 			</div>
 
 			<ul>
-			<span class="fragment"><li>Monitor logs and metrics of your monolith and microservice apps</li></span>
-			<span class="fragment"><li>Define alerting rules to be notified when anolies are detected (provided by the **Elastalert** tool from Yelp)</li></span>
-			<span class="fragment"><li>Can be customized and extended to suit your needs</li></span>
+    			<li class="fragment">Monitor logs and metrics of your monolith and microservice apps</li>
+    			<li class="fragment">Define alerting rules to be notified when anolies are detected (provided by the **Elastalert** tool from Yelp)</li>
+    			<li class="fragment">Can be customized and extended to suit your needs</li>
+            </ul>
 			</script>
-			<aside>
-
-			</aside>
 		</section>
 		<section data-markdown>
 			<script type="text/template">
@@ -248,11 +245,13 @@ docker-compose up -d
 		<script type="text/template">
 			### Centralized Configuration with JHipster and Spring Cloud Config
 			<p><i class="fa fa-leaf"></i> + <i class="fa fa-cloud"></i> + <i class="fa fa-cogs"></i></p>
-			<ul><span class="fragment"><li> Deal with the complexity of managing multiples services configuration</li></span>
-			<span class="fragment"><li> Externalize applications configuration (12 factor)</li></span>
-			<span class="fragment"><li> Define configurations for specific profiles (dev, prod)</li></span>
-			<span class="fragment"><li> Put the configuration under version control</li></span>
-			<span class="fragment"><li> Bonus: refresh configuration without restarting the app</li></span></ul>
+			<ul>
+                <li class="fragment"> Deal with the complexity of managing multiples services configuration</li>
+    			<li class="fragment"> Externalize applications configuration (12 factor)</li>
+    			<li class="fragment"> Define configurations for specific profiles (dev, prod)</li>
+    			<li class="fragment"> Put the configuration under version control</li>
+    			<li class="fragment"> Bonus: refresh configuration without restarting the app</li>
+            </ul>
 		</script>
 	</section>
 
@@ -260,19 +259,18 @@ docker-compose up -d
 		<script type="text/template">
 			### How does it works ?
 
-			<ul><span class="fragment"><li> On startup, applications query the **configuration server** and overwrite local properties with the remote ones</li></span>
-			<div class="fragment">
-			<li> Properties are regular Spring Boot properties:
-				<div class="fragment">
-				<ul>
-				<li> Typed, defined with a key-value format (.properties, .yml)</li>
-				<li> Defined in **@ConfigurationProperties** classes</li>
-				<li> Properties can be profile specific </li><!--application.yml, application-dev.yml replaced extended  -->
-				<li> Several profiles can be used at the same time</li>
-				<ul>
-				</div>
-			</li>
-		</div>
+			<ul>
+                <li class="fragment"> On startup, applications query the **configuration server** and overwrite local properties with the remote ones</li></span>
+    			<div class="fragment">
+    			<li> Properties are regular Spring Boot properties:
+    				<ul>
+        				<li> Typed, defined with a key-value format (.properties, .yml)</li>
+        				<li> Defined in **@ConfigurationProperties** classes</li>
+        				<li> Properties can be profile specific </li><!--application.yml, application-dev.yml replaced extended  -->
+        				<li> Several profiles can be used at the same time</li>
+                    </ul>
+    			</li>
+            </ul>
 		</script>
 	</section>
 
@@ -357,16 +355,16 @@ docker-compose up -d
 	    <li> Deploy <b>account-v2</b> a new (and better) account microservice that introduce breaking changes</li>
 	    <li> On the gateway, edit the route redirect API calls to accountv2</li>
 	    </ul></p>
-	    
+
 	    <p>On the <b>front-end</b>:
 	    <ul>
 	      <li> Switch a toggle to display the new UI</li>
 	    </ul>
 	    </p>
-	    
+
 	    <b>Requirements</b>:
 	    <ul style="disc">
-	      <li>Back-end and Front-end changes must happen at the same time</li> 
+	      <li>Back-end and Front-end changes must happen at the same time</li>
 	      <li>We are not allowed to restart the gateway</li>
 	    </ul>
 	    </div>
