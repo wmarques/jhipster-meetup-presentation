@@ -57,11 +57,11 @@
 				</section>
 
                 <section>
-                    <h2>Summary</h2>
-                    <ol>
-                        <li>One Docker Compose to run them all</li>
-                        <li>Monitoring with JHipster Console</li>
-                        <li>Jhipster Microservices Configuration</li>
+                    <h1>Summary</h1>
+                    <ol style="font-size:150%">
+                        <li>One <span class="fragment highlight-blue">Docker Compose</span> to run them all</li>
+                        <li>Monitoring with <span class="fragment highlight-red">JHipster Console</span></li>
+                        <li>JHipster Microservices <span class="fragment highlight-green">Configuration</span></li>
                     </ol>
                 </section>
 				<section data-markdown>
@@ -237,7 +237,7 @@ services:
 				### JHipster Microservice <i class="fa fa-sitemap"></i>
 
 				<img src="img/microservices_architecture_monitoring.png" style="margin:0px;border:none;box-shadow:none" width="70%"/>
-				<h4 > Part 2: Monitoring with <span style="color:#2980b9">JHipster Console</span></h4>
+				<h4 > Part 2: Monitoring with <span style="color:red">JHipster Console</span></h4>
 			</script>
 		</section>
 	<section>
@@ -316,7 +316,7 @@ docker-compose up -d
 				### JHipster Microservice <i class="fa fa-sitemap"></i>
 
 				<img src="img/microservices_architecture_config_server.png" style="margin:0px;border:none;box-shadow:none" width="70%"/>
-				<h4> Part 3: JHipster <span style="color:#2980b9">microservices configuration</span></h4>
+				<h4> Part 3: JHipster microservices <span style="color:green">configuration</span></h4>
 			</script>
 		</section>
 <section>
@@ -372,6 +372,8 @@ docker-compose up -d
 		<script type="text/template">
 		  # DEMO
 		### CENTRALIZED CONFIGURATION
+		### WITH
+		### SPRING CLOUD CONFIG SERVER
 		<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
 	</script>
 	</section>
@@ -434,8 +436,15 @@ docker-compose up -d
 	      <li>Back-end and Front-end changes must happen at the same time</li>
 	      <li>We are not allowed to restart the gateway</li>
 	    </ul>
-</div>
+	</div>
 	    </div>
+	</section>
+	<section data-markdown>
+		<script type="text/template">
+		  # DEMO
+		### FEATURE TOGGLE
+		### WITH JHIPSTER MICROSERVICE
+	</script>
 	</section>
 </section>
 
