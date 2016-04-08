@@ -272,7 +272,7 @@ docker-compose up -d
     			<div class="fragment">
     			<li> Properties are regular Spring Boot properties:
     				<ul>
-        				<li> Typed, defined with a key-value format (.properties, .yml)</li>
+        				<li> Typed, _key-value_ format (.properties, .yml)</li>
         				<li> Defined in **@ConfigurationProperties** classes</li>
         				<li> Properties can be profile specific </li><!--application.yml, application-dev.yml replaced extended  -->
         				<li> Several profiles can be used at the same time</li>
@@ -284,18 +284,18 @@ docker-compose up -d
 
 	<section data-markdown>
 		<script type="text/template">
-			### Use the Configuration Server
+			### Using the Configuration Server
 			How do I define externalized properties for my services ?
 
 			<span style="font-size:95%" class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files in your configuration source</span>
 			<div class="fragment">
 			`hipsterBankGateway.yml`
 			```
-			property.foo: Greetings Java Hipster !
+			property.greeting: Greetings Java Hipster !
 			```
 			`hipsterBankGateway-meetup.yml`
 			```
-			property.foo: Greetings Java Hipster Meetup!
+			property.greeting: Greetings Java Hipster Meetup!
 			```
 		</script>
 	</section>
@@ -358,25 +358,30 @@ docker-compose up -d
 	<section>
 	  <h3>What we are going to do ?</h3>
 	  <div style="font-size:90%;text-align:left">
-
+<div class="fragment">
 	    <p>On the <b>back-end</b>:
 	    <ul>
 	    <li> Deploy <b>account-v2</b> a new (and better) account microservice that introduce breaking changes</li>
 	    <li> On the gateway, edit the routes to redirect API calls to accountv2</li>
 	    </ul></p>
-
+</div>
+<div class="fragment">
 	    <p>On the <b>front-end</b>:
 	    <ul>
 	      <li> Switch a toggle to display the new UI</li>
 	    </ul>
 	    </p>
-
+</div>
+<div class="fragment">
 	    <b>Requirements</b>:
 	    <ul style="disc">
 	      <li>Back-end and Front-end changes must happen at the same time</li>
 	      <li>We are not allowed to restart the gateway</li>
 	    </ul>
+</div>
 	    </div>
+
+
 	</section>
 
 	<section data-markdown>
@@ -403,12 +408,12 @@ docker-compose up -d
 	<script type="text/template">
 ### Circuit Breakers
 * Wrap microservice calls in a component that monitor for failures
-* Define a failure threshold beyond which the circuit will _trip open_
-* Once the circuit is opened, calls stop being made
+* Define a failure **threshold** beyond which the circuit will _trip open_
+* Once the circuit is opened, calls <span style="color:red">stop</span> being made
 
 **Motivations:**
-* Allow the microservice time to heal
-* Redirect to a fallback (Optional)
+* Give the microservice time to heal
+* Redirect to a fallback
 </div>
 
 **Hystrix:**
