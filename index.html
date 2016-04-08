@@ -38,23 +38,32 @@
                 <section>
 					<br/><br/>
 					<h2>Who are we ?</h2>
-				<div style="float:left">
-					<img src="img/1577727.jpeg" width="150"/>
-					<h3>William Marques</h3>
-                    <p><a href="http://twitter.com/wylmarq">@wylmarq</a></p>
-                    <p><a href="mailto:wmarques@ippon.fr">wmarques@ippon.fr</a></p>
-					<p>JHipster Intern</p>
+    				<div style="float:left">
+    					<img src="img/1577727.jpeg" width="150"/>
+    					<h3>William Marques</h3>
+                        <p><a href="http://twitter.com/wylmarq">@wylmarq</a></p>
+                        <p><a href="mailto:wmarques@ippon.fr">wmarques@ippon.fr</a></p>
+    					<p>JHipster Intern</p>
 
-				</div>
-				<div style="float:right">
-					<img src="img/513471.jpeg" width="150"/>
-					<h3>Pierre Besson</h3>
-					<p><a href="http://twitter.com/pibesson">@pibesson</a></p>
-                    <p><a href="mailto:pbesson@ippon.fr">pbesson@ippon.fr</a></p>
-					<p>JHipster Intern</p>
-				</div>
+    				</div>
+    				<div style="float:right">
+    					<img src="img/513471.jpeg" width="150"/>
+    					<h3>Pierre Besson</h3>
+    					<p><a href="http://twitter.com/pibesson">@pibesson</a></p>
+                        <p><a href="mailto:pbesson@ippon.fr">pbesson@ippon.fr</a></p>
+    					<p>JHipster Intern</p>
+    				</div>
 
 				</section>
+
+                <section>
+                    <h2>Summary</h2>
+                    <ol>
+                        <li>One Docker Compose to run them all</li>
+                        <li>Monitoring with JHipster Console</li>
+                        <li>Jhipster Microservices Configuration</li>
+                    </ol>
+                </section>
 				<section>
 					<h4>Microservices, Gateway, Registry, Dashboards ...</h4>
 					<h3><i class="fa fa-sitemap"></i> + <i class="fa fa-book"></i> + <i class="fa fa-tachometer"></i></h3>
@@ -128,6 +137,51 @@
                         <pre><code data-trim class="sh">
 cd docker-config
 yo jhipster:docker-compose
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>What do we have here ?</h2>
+                        <p>Here is the (simplified) generated docker-compose file:</p>
+                        <pre><code data-trim>
+version: '2'
+services:
+
+    jhipster-registry:
+        extends:
+          file: jhipster-registry.yml
+          service: jhipster-registry
+
+    accountsmicroservice-app:
+        image: accountsmicroservice
+        external_links:
+            - accountsmicroservice-mysql:mysql
+            - jhipster-registry:registry
+    accountsmicroservice-mysql:
+        container_name: accountsmicroservice-mysql
+        image: mysql:5.7.11
+
+
+    hipsterbankgateway-app:
+        image: hipsterbankgateway
+        external_links:
+            - hipsterbankgateway-mysql:mysql
+            - jhipster-registry:registry
+        ports:
+            - 8080:8080
+    hipsterbankgateway-mysql:
+        container_name: hipsterbankgateway-mysql
+        image: mysql:5.7.11
+
+    insurances-app:
+        image: insurances
+        external_links:
+            - insurances-mongodb:mongodb
+            - jhipster-registry:registry
+
+    insurances-mongodb:
+        container_name: insurances-mongodb
+        image: mongo:3.2.3
                         </code></pre>
                     </section>
 
