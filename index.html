@@ -167,10 +167,19 @@ yo jhipster:docker-compose
                         </p>
                     </section>
                 </section>
+
+	<section data-markdown>
+			<script type="text/template">
+				### JHipster Microservice Architecture <i class="fa fa-sitemap"></i>
+
+				<img src="img/microservices_architecture_1.png" style="border:none" width="75%"/>
+
+			</script>
+		</section>
 	<section>
 		<section data-markdown>
 			<script type="text/template">
-				### Monitoring a JHipster microservice architecture
+				### Monitoring a JHipster microservice cluster
 				##<i class="fa fa-line-chart"></i>
 				<span style="float:left">What do we want to do ?</span>
 				* Centralize and analyse all your apps logs and metrics
@@ -230,7 +239,11 @@ docker-compose up -d
 		</section>
 		<section data-markdown>
 			<script type="text/template">
-				# DEMO
+			  # DEMO
+			  ### MICROSERVICE MONITORING
+			  ### WITH
+			  ### <span style="color:#2196f3">JHIPSTER CONSOLE</span>
+
 			</script>
 		</section>
 	</section>
@@ -301,7 +314,8 @@ docker-compose up -d
 
 	<section data-markdown>
 		<script type="text/template">
-		# DEMO
+		  # DEMO
+		### CENTRALIZED CONFIGURATION
 		<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
 	</script>
 	</section>
@@ -348,7 +362,7 @@ docker-compose up -d
 	    <p>On the <b>back-end</b>:
 	    <ul>
 	    <li> Deploy <b>account-v2</b> a new (and better) account microservice that introduce breaking changes</li>
-	    <li> On the gateway, edit the route redirect API calls to accountv2</li>
+	    <li> On the gateway, edit the routes to redirect API calls to accountv2</li>
 	    </ul></p>
 
 	    <p>On the <b>front-end</b>:
@@ -366,14 +380,67 @@ docker-compose up -d
 	</section>
 
 	<section data-markdown>
-		<script type="text/template">
-		# DEMO
+	  <script type="text/template">
+	        # DEMO
+		### FEATURE TOGGLE
+		### WITH
+		### <span style="color:#2196f3">SPRING CLOUD CONFIG SERVER</span>
 		<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
 	</script>
 	</section>
-    </section>
-<section style="text-align: left;">
+
+</section>
+<section>
+<section data-markdown>
+	<script type="text/template" >
+### Applying the Circuit Breaker Pattern
+### with
+### JHipster microservices
+	</script>
+</section>
+
+<section data-markdown style="text-align:left;font-size:90%">
+	<script type="text/template">
+### Circuit Breakers
+* Wrap microservice calls in a component that monitor for failures
+* Define a failure threshold beyond which the circuit will _trip open_
+* Once the circuit is opened, calls stop being made
+
+**Motivations:**
+* Allow the microservice time to heal
+* Redirect to a fallback (Optional)
+</div>
+
+**Hystrix:**
+* Latency and fault tolerance library from Netflix
+* Integrated with Ribbon (load balancing)
+* Provide fallbacks and monitoring
+</script>
+
+<aside>
+	- Stop cascading failures in a complex distributed system.
+	- Fail fast and rapidly recover.
+	- Fallback and gracefully degrade when possible.
+	- Enable near real-time monitoring, alerting, and operational control.
+</aside>
+</section>
+
+<section data-markdown>
+	<script type="text/template" >
+### Demo
+
+<img src="img/circuit-breakers-architecture.png" width="70%" style="border:none;box-shadow:none"/>
+
+<img src="img/hystrix-dashboard.png" width="60%"/>
+
+<a href="https://github.com/PierreBesson/jhipster-circuit-breaker-demo" style="font-size:80%">https://github.com/PierreBesson/jhipster-circuit-breaker-demo</a>
+	</script>
+</section>
+</section>
+
+<section>
   <h1>Thank You !</h1>
+  <img src="img/logo-jhipster2x.png" style="border:none;box-shadow:none"/>
 </section>
 </div>
 
