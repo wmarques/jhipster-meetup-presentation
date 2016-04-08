@@ -55,6 +55,14 @@
 				</div>
 
 				</section>
+				<section data-markdown>
+						<script type="text/template">
+							### JHipster Microservice <i class="fa fa-sitemap"></i>
+
+							<img src="img/microservices_architecture_compose.png" style="margin:0px;border:none;box-shadow:none" width="70%"/>
+							<h4 > Part 1: One <span style="color:#2980b9">Docker Compose</span> to run them all </h4>
+						</script>
+					</section>
 				<section>
 					<h4>Microservices, Gateway, Registry, Dashboards ...</h4>
 					<h3><i class="fa fa-sitemap"></i> + <i class="fa fa-book"></i> + <i class="fa fa-tachometer"></i></h3>
@@ -172,10 +180,10 @@ yo jhipster:docker-compose
 
 	<section data-markdown>
 			<script type="text/template">
-				### JHipster Microservice Architecture <i class="fa fa-sitemap"></i>
+				### JHipster Microservice <i class="fa fa-sitemap"></i>
 
-				<img src="img/microservices_architecture_1.png" style="border:none" width="75%"/>
-
+				<img src="img/microservices_architecture_monitoring.png" style="margin:0px;border:none;box-shadow:none" width="70%"/>
+				<h4 > Part 2: Monitoring with <span style="color:#2980b9">JHipster Console</span></h4>
 			</script>
 		</section>
 	<section>
@@ -249,30 +257,33 @@ docker-compose up -d
 			</script>
 		</section>
 	</section>
+	<section data-markdown>
+			<script type="text/template">
+				### JHipster Microservice <i class="fa fa-sitemap"></i>
 
+				<img src="img/microservices_architecture_config_server.png" style="margin:0px;border:none;box-shadow:none" width="70%"/>
+				<h4> Part 3: JHipster <span style="color:#2980b9">microservices configuration</span></h4>
+			</script>
+		</section>
 <section>
 	<section data-markdown>
 		<script type="text/template">
 			### Centralized Configuration with JHipster and Spring Cloud Config
 			<p><i class="fa fa-leaf"></i> + <i class="fa fa-cloud"></i> + <i class="fa fa-cogs"></i></p>
 			<ul>
-                <li class="fragment"> Deal with the complexity of managing multiples services configuration</li>
-    			<li class="fragment"> Externalize applications configuration (12 factor)</li>
-    			<li class="fragment"> Define configurations for specific profiles (dev, prod)</li>
-    			<li class="fragment"> Put the configuration under version control</li>
-    			<li class="fragment"> Bonus: refresh configuration without restarting the app</li>
+                <li> Manage all your services configuration in a single place</li>
+    			<li> Define configurations for specific profiles (dev, prod)</li>
+    			<li> Put the configuration under version control</li>
+    			<li> Bonus: refresh configuration without restarting the app</li>
             </ul>
 		</script>
 	</section>
-
 	<section data-markdown>
 		<script type="text/template">
 			### How does it works ?
-
 			<ul>
                 <li class="fragment"> On startup, applications query the **configuration server** and overwrite local properties with the remote ones</li></span>
-    			<div class="fragment">
-    			<li> Properties are regular Spring Boot properties:
+    			<li class="fragment" style=" margin: 20px 0;"> Properties are regular Spring Boot properties:
     				<ul>
         				<li> Typed, _key-value_ format (.properties, .yml)</li>
         				<li> Defined in **@ConfigurationProperties** classes</li>
@@ -286,31 +297,20 @@ docker-compose up -d
 
 	<section data-markdown>
 		<script type="text/template">
-			### Using the Configuration Server
-			How do I define externalized properties for my services ?
-
-			<span style="font-size:95%" class="fragment"><i class="fa fa-arrow-right"></i> Simply add regular property files in your configuration source</span>
-			<div class="fragment">
-			`hipsterBankGateway.yml`
-			```
-			property.greeting: Greetings Java Hipster !
-			```
-			`hipsterBankGateway-meetup.yml`
-			```
-			property.greeting: Greetings Java Hipster Meetup!
-			```
-		</script>
-	</section>
-
-	<section data-markdown>
-		<script type="text/template">
-		### Configurations sources
-		- <i class="fa fa-file-text-o"></i> File based  (for development)
-		- <i class="fa fa-code-fork"></i> Git based (for production)
-
+		### Using the Configuration Server
+		<div style="font-size:95%" class="fragment">
+		How do I define externalized properties for my services ?
+		<div><i class="fa fa-arrow-right"></i> Simply add regular property files in your configuration source</div>
+		</div>
+	<div class="fragment" style="margin:30px">
+		<h3> Configurations sources</h3>
+		<div style="text-align:left">
+		<ul><li> <i class="fa fa-file-text-o"></i> File based  (for development)</li>
+		<li> <i class="fa fa-code-fork"></i> Git based (for production)</li>
 	<p><i class="fa fa-arrow-circle-right"></i> Load from a git repo (_file://_, _https://_ or _ssh://_)</p>
-	<p><i class="fa fa-arrow-circle-right"></i> Persists the config on the clients</p>
 	<p><i class="fa fa-arrow-circle-right"></i> Tag the config (using _branches_ or _commit ids_)</p>
+	</ul>
+		</div>
 	</script>
 	</section>
 
@@ -382,19 +382,18 @@ docker-compose up -d
 	    </ul>
 </div>
 	    </div>
-
-
 	</section>
+</section>
 
-	<section data-markdown>
-	  <script type="text/template">
-	        # DEMO
-		### FEATURE TOGGLE
-		### WITH
-		### <span style="color:#2196f3">SPRING CLOUD CONFIG SERVER</span>
-		<!-- config server demo, sample property with a rest controller, dev, prod, hot refresh -->
-	</script>
-	</section>
+<!-- too bad, no time for this goodness
+<section data-markdown>
+  <script type="text/template">
+        # DEMO
+	### FEATURE TOGGLE
+	### WITH
+	### <span style="color:#2196f3">SPRING CLOUD CONFIG SERVER</span>
+</script>
+</section>
 
 </section>
 <section>
@@ -444,10 +443,22 @@ docker-compose up -d
 	</script>
 </section>
 </section>
+-->
 
 <section>
   <h1>Thank You !</h1>
   <img src="img/logo-jhipster2x.png" style="border:none;box-shadow:none"/>
+  <div style="float:left">
+	  <h3>William Marques</h3>
+	  <p><a href="http://twitter.com/wylmarq">@wylmarq</a></p>
+	  <p><a href="mailto:wmarques@ippon.fr">wmarques@ippon.fr</a></p>
+
+  </div>
+  <div style="float:right">
+	  <h3>Pierre Besson</h3>
+	  <p><a href="http://twitter.com/pibesson">@pibesson</a></p>
+	  <p><a href="mailto:pbesson@ippon.fr">pbesson@ippon.fr</a></p>
+  </div>
 </section>
 </div>
 
