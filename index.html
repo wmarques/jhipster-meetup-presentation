@@ -41,7 +41,8 @@
     				<div style="float:left">
     					<img src="img/1577727.jpeg" width="150"/>
     					<h3>William Marques</h3>
-                        <p><a href="http://twitter.com/wylmarq">@wylmarq</a></p>
+                        <p><a href="http://twitter.com/wylmarq"><i class="fa fa-twitter"></i>
+@wylmarq</a></p>
                         <p><a href="mailto:wmarques@ippon.fr">wmarques@ippon.fr</a></p>
     					<p>JHipster Intern</p>
 
@@ -49,7 +50,8 @@
     				<div style="float:right">
     					<img src="img/513471.jpeg" width="150"/>
     					<h3>Pierre Besson</h3>
-    					<p><a href="http://twitter.com/pibesson">@pibesson</a></p>
+    					<p><a href="http://twitter.com/pibesson"><i class="fa fa-twitter"></i>
+@pibesson</a></p>
                         <p><a href="mailto:pbesson@ippon.fr">pbesson@ippon.fr</a></p>
     					<p>JHipster Intern</p>
     				</div>
@@ -247,9 +249,9 @@ services:
 				##<i class="fa fa-line-chart"></i>
 				<span style="float:left">What do we want to do ?</span>
 				* Centralize and analyse all your apps logs and metrics
-				* Be able to index and search logs
-				* Display metrics in real time graphs
-				* Have some level of interactivity in our dashboards <!--refine the selection -->
+				* Be able to index and search monitoring information
+				* Display metrics in real time, interactive graphs
+				* Receive alerts <!--refine the selection -->
 			</script>
 		</section>
 		<section data-markdown>
@@ -286,10 +288,10 @@ jhipster:
 		logstash:
 			enabled: true
 			host: localhost
-		metrics:
-			logs:
-			    enabled: true
-			    reportFrequency: 60 # seconds
+	metrics:
+		logs:
+		    enabled: true
+		    reportFrequency: 60 # seconds
 ```
 Get the compose file and start **JHipster-Console**, **Elasticsearch** and **Logstash**:
 <!--
@@ -396,7 +398,7 @@ docker-compose up -d
 		<script type="text/template">
 	### Feature Toggling <i class="fa fa-toggle-on"></i>
 	### with JHipster microservices
-	* **Goal:** Safely replace an existing functionality with no downtime
+	* **Goal:** Safely add or replace a feature with no downtime
 	* **Problem:** Our architecture is distributed !<!-- so it's not just a matter of wrapping new code in a big "if"-->
 
 	<blockquote style="width:100%">
@@ -420,7 +422,7 @@ docker-compose up -d
 	    <p>On the <b>back-end</b>:
 	    <ul>
 	    <li> Deploy <b>account-v2</b> a new (and better) account microservice that introduce breaking changes</li>
-	    <li> On the gateway, edit the routes to redirect API calls to accountv2</li>
+	    <li> On the gateway, edit routes to redirect API calls to <b>account-v2</b></li>
 	    </ul></p>
 </div>
 <div class="fragment">
@@ -513,13 +515,15 @@ docker-compose up -d
   <img src="img/logo-jhipster2x.png" style="border:none;box-shadow:none"/>
   <div style="float:left">
 	  <h3>William Marques</h3>
-	  <p><a href="http://twitter.com/wylmarq">@wylmarq</a></p>
+	  <p><a href="http://twitter.com/wylmarq"><i class="fa fa-twitter"></i>
+@wylmarq</a></p>
 	  <p><a href="mailto:wmarques@ippon.fr">wmarques@ippon.fr</a></p>
 
   </div>
   <div style="float:right">
 	  <h3>Pierre Besson</h3>
-	  <p><a href="http://twitter.com/pibesson">@pibesson</a></p>
+	  <p><a href="http://twitter.com/pibesson"><i class="fa fa-twitter"></i>
+@pibesson</a></p>
 	  <p><a href="mailto:pbesson@ippon.fr">pbesson@ippon.fr</a></p>
   </div>
 </section>
