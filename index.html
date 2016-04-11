@@ -162,6 +162,14 @@ yo jhipster:docker-compose
                     </section>
 
                     <section>
+                        <h2>Let's run everything with one command</h2>
+                        <pre><code data-trim class="sh">
+                        docker-compose up -d
+                        </code></pre>
+                        <img  data-src="img/kanye.gif" alt="" />
+                    </section>
+
+                    <section>
                         <h2>What do we have here ?</h2>
                         <p>Here is the (simplified) generated docker-compose file:</p>
                         <pre><code data-trim>
@@ -205,14 +213,6 @@ services:
         image: mongo:3.2.3
                         </code></pre>
                     </section>
-
-                    <section>
-                        <h2>Let's run everything with one command</h2>
-                        <pre><code data-trim class="sh">
-                        docker-compose up -d
-                        </code></pre>
-                        <img  data-src="img/kanye.gif" alt="" />
-                    </section>
 				</section>
 
                 <section>
@@ -234,15 +234,13 @@ services:
                         </p>
                         <p>
                             We are going to scale our MongoDB database:
-                            <ul>
-                                <li>Use the cluster mode of MongoDB</li>
-                                <li>Scale the node service</li>
-                                <li>Initiate a replicaset of X node</li>
-                                <li>Register the shard into the router service (mongos)</li>
-                                <li>Relaunch our application</li>
-                            </ul>
+                            <img style="border:none;"  src="img/mongoreplica.jpg" alt="">
+                        </p>
+                        <p style="text-align: right; font-size: 0.6em;">
+                            <i>Picture from wayneye.com</i>
                         </p>
                     </section>
+
                 </section>
 
 	<section data-markdown>
