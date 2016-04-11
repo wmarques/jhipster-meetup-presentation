@@ -224,8 +224,17 @@ services:
                     <section>
                         <h2>How to scale a microservice</h2>
                         <pre><code data-trim class="sh">
-                            docker-compose scale ms-app=3
+                            docker-compose scale accountsmicroservice-app=2
                         </code></pre>
+                        <br>
+                        <h3>
+                            What's Happening ?
+                        </h3>
+                        <ul>
+                            <li>Instances see each other, thanks to Eureka</li>
+                            <li>The gateway load balance between each instances</li>
+                            <li>Cache replication with HazelCast (for SQL databases)</li>
+                        </ul>
                     </section>
                     <section>
                         <h2>How to scale a database</h2>
